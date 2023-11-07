@@ -1,12 +1,13 @@
 <?php 
-require "../model/Database.php";
-require "../function.php";
 
-$db = new Database();
+use Core\App;
+
+$db = App::resolve('Core\Database');
 
 $id_user = 1;
 
-if(isset($_GET['method']) && isset($_GET["todo_id"])){
+
+if(isset($_GET["todo_id"])){
     if(isset($_GET['done'])){
             $db->query('UPDATE Todos SET done = :done WHERE id = :todo_id',[
             'done'=>intval($_GET['done']),

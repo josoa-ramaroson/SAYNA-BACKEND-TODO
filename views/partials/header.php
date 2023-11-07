@@ -8,11 +8,18 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="public/css/all.min.css">
+  <link rel="stylesheet" href="css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="public/css/adminlte.min.css">
-  <link rel="stylesheet" href="public/css/fontawesome.min.css">
-  <link rel="stylesheet" href="public/css/li.css">
-
+  <link rel="stylesheet" href="css/adminlte.min.css">
+  
+  <link rel="stylesheet" href="css/li.css">
+  <style>
+  form{
+    width: 100%;
+  }
+  input[type="text"]{
+    width: 300%;
+  }
+</style>
 </head>
 <body class="hold-transition sidebar-mini sidebar-collapse">

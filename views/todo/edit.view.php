@@ -1,28 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Todo Apps</title>
+<?php  view("partials/header.php") ?>
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../public/css/all.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../public/css/adminlte.min.css">
-  <link rel="stylesheet" href="../public/css/fontawesome.min.css">
-  <link rel="stylesheet" href="../public/css/li.css">
-<style>
-  form{
-    width: 100%;
-  }
-  input[type="text"]{
-    width: 300%;
-  }
-</style>
-</head>
-<body class="hold-transition sidebar-mini sidebar-collapse">
 <div class="wrapper">
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -63,7 +40,8 @@
                     <div class="icheck-primary d-inline ml-2">
                         <input type="checkbox" name=<?="todo".$todo["id"]?> id=<?="todoCheck".$todo["id"]?> <?=$todo["done"]?"checked":""?>>
                         <label class="text" for=<?="todoCheck".$todo["id"]?>>
-                            <form action="/controllers/todo-update.php" method="POST" id="modified-form">
+                            <form action="/update" method="POST" id="modified-form">
+                              <input type="hidden" name="_method" value="PUT">
                               <input type="hidden" name="id_user" value="<?=$id_user?>" >
                               <input type="hidden" name="todo_id" value="<?=$todo["id"]?>" >
                               <input type="text" name="body" id="modify" required value="<?= $todo["body"]?>">
@@ -81,23 +59,20 @@
                     <a href="/controllers/todo-edit.php?todo_id=<?=$todo["id"] ?>">
                         <i class="fas fa-edit"></i>
                       </a>
-                      <a href="/controllers/todo-delete.php?todo_id=<?=$todo["id"] ?>">
-                        <i class="fas fa-trash"></i>
-                      </a>
+                      
                     </div>
                 </li>
             <?php else:?>
               <li class="todo-item">
                     <!-- checkbox -->
-
                     <div class="icheck-primary d-inline ml-2">
-                        <a href="/controllers/todo-update.php?method=PUT&todo_id=<?=$todo['id']?>&done=<?=($todo["done"]== 1)?0:1?>">
-                        <input type="checkbox" name=<?="todo".$todo["id"]?> id=<?="todoCheck".$todo["id"]?> <?=$todo["done"]?"checked":""?>>
-                        <label class="text" for=<?="todoCheck".$todo["id"]?>>
-                            <a href="/controllers/todo-update.php?method=PUT&todo_id=<?=$todo['id']?>&done=<?=($todo["done"]== 1)?0:1?>">
-                        <!-- todo text -->     
-                              <?= $todo["body"]?>
-                            </a>
+                        <a href="/update?_method=PUT&todo_id=<?=$todo['id']?>&done=<?=($todo["done"]== 1)?0:1?>">
+                            <input type="checkbox" name=<?="todo".$todo["id"]?> id=<?="todoCheck".$todo["id"]?> <?=$todo["done"]?"checked":""?>>
+                            <label  for=<?="todoCheck".$todo["id"]?>>
+                                <a class="text" href="/controllers/todo-update.php?method=PUT&todo_id=<?=$todo['id']?>&done=<?=($todo["done"]== 1)?0:1?>">
+                            <!-- todo text -->     
+                                  <?= $todo["body"]?>
+                        </a>
 
                         </label>
                       </a>
@@ -105,12 +80,10 @@
                     <!-- Emphasis label -->
                     <!-- General tools such as edit or delete-->
                     <div class="tools">
-                      <a href="/controllers/todo-edit.php?todo_id=<?=$todo["id"] ?>">
+                      <a href="/edit?todo_id=<?=$todo["id"] ?>">
                         <i class="fas fa-edit"></i>
                       </a>
-                      <a href="/controllers/todo-delete.php?todo_id=<?=$todo["id"] ?>">
-                        <i class="fas fa-trash"></i>
-                      </a>
+                     
                     </div>
                 </li>
             <?php endif?>
@@ -120,35 +93,8 @@
     </div>
 
 
-<script>
-  let modified = document.getElementById("modify"); 
-  let form = document.getElementById("modified-form");
-
-  modified.onkeypress = (e)=> {
- 
-  }
-</script>
    
 
 
 
-
-
-
-
-
-
-
-
-<!-- jQuery -->
-<script src="../public/js/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../public/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../public/js/adminlte.min.js"></script>
-<script src="../public/js/todo-update.js"></script>
-
-
-
-</body>
-</html>
+<?php view ("partials/footer.php") ?>

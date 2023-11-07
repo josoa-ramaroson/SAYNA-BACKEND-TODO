@@ -1,4 +1,4 @@
-<?php require "views/partials/header.php" ?>
+<?php view("partials/header.php") ?>
 
 
 <div class="wrapper">
@@ -19,8 +19,9 @@
               
                 <div class="card-body">
                       <!-- /.card-header -->
-                <form a method="POST" >
+                <form action="/store" method="POST" >
                     <div class="input-group input-group-sm">
+
                     <input type="hidden" name="id_user" value="<?=$id_user?>" >
                 
                         <input type="text" class="form-control" required name="body">
@@ -36,13 +37,13 @@
                     <!-- checkbox -->
 
                     <div class="icheck-primary d-inline ml-2">
-                        <a href="/controllers/todo-update.php?method=PUT&todo_id=<?=$todo['id']?>&done=<?=($todo["done"]== 1)?0:1?>">
-                        <input type="checkbox" name=<?="todo".$todo["id"]?> id=<?="todoCheck".$todo["id"]?> <?=$todo["done"]?"checked":""?>>
-                        <label  for=<?="todoCheck".$todo["id"]?>>
-                            <a class="text" href="/controllers/todo-update.php?method=PUT&todo_id=<?=$todo['id']?>&done=<?=($todo["done"]== 1)?0:1?>">
-                        <!-- todo text -->     
-                              <?= $todo["body"]?>
-                            </a>
+                        <a href="/update?_method=PUT&todo_id=<?=$todo['id']?>&done=<?=($todo["done"]== 1)?0:1?>">
+                            <input type="checkbox" name=<?="todo".$todo["id"]?> id=<?="todoCheck".$todo["id"]?> <?=$todo["done"]?"checked":""?>>
+                            <label  for=<?="todoCheck".$todo["id"]?>>
+                                <a class="text" href="/controllers/todo-update.php?method=PUT&todo_id=<?=$todo['id']?>&done=<?=($todo["done"]== 1)?0:1?>">
+                            <!-- todo text -->     
+                                  <?= $todo["body"]?>
+                        </a>
 
                         </label>
                       </a>
@@ -50,10 +51,10 @@
                     <!-- Emphasis label -->
                     <!-- General tools such as edit or delete-->
                     <div class="tools">
-                      <a href="/controllers/todo-edit.php?todo_id=<?=$todo["id"] ?>">
+                      <a href="/edit?todo_id=<?=$todo["id"] ?>">
                         <i class="fas fa-edit"></i>
                       </a>
-                      <a href="/controllers/todo-delete.php?todo_id=<?=$todo["id"] ?>">
+                      <a href="/delete?todo_id=<?=$todo["id"] ?>&_method=DELETE">
                         <i class="fas fa-trash"></i>
                       </a>
                     </div>
@@ -65,4 +66,4 @@
 
 
 
-    <?php require "views/partials/footer.php" ?>
+    <?php view("partials/footer.php") ?>
