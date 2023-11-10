@@ -9,7 +9,7 @@ class Database
     public $statement;
 
     public function __construct(){
-        $this->connection = new PDO("mysql:host=127.0.0.1;port=3306;dbname=todoDB","noteUser","I7I4I2-70&o@", [
+        $this->connection = new PDO("mysql:host=127.0.0.1;port=3306;dbname=todoDB","test","test", [
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
          ]);
     }
